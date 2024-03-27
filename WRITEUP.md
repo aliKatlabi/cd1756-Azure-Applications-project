@@ -16,4 +16,4 @@ We need to carefully evaluate and justify the best resource option for deploying
 * Considering all these factors, App service seems to be a good choice for this project. This is a small application and we can quickly configure and deploy it to App service from Github. It also allows us to easily authenticate users with Active Directory and monitor with Alert, Logs, which provides easy log filtering with many example queries.
 ### Assess app changes that would change your decision.
 
-*Detail how the app and any other needs would have to change for you to change your decision in the last section.* 
+*Detail how the app and any other needs would have to change for you to change your decision in the last section.* https://cmsapplication.azurewebsites.net/
