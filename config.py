@@ -13,9 +13,20 @@ class Config(object):
     SQL_SERVER = os.environ.get('SQL_SERVER') or 'article-cms.database.windows.net'
     SQL_DATABASE = os.environ.get('SQL_DATABASE') or 'article_cms_db'
     SQL_USER_NAME = os.environ.get('SQL_USER_NAME') or 'article-cms-admin'
-    SQL_PASSWORD = os.environ.get('SQL_PASSWORD') or 'super-user@1234'
+    SQL_PASSWORD = os.environ.get('SQL_PASSWORD') or 'super-user12345'
     # Below URI may need some adjustments for driver version, based on your OS, if running locally
-    SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc://' + SQL_USER_NAME + '@' + SQL_SERVER + ':' + SQL_PASSWORD + '@' + SQL_SERVER + ':1433/' + SQL_DATABASE  + '?driver=ODBC+Driver+17+for+SQL+Server'
+    # SQLALCHEMY_DATABASE_URI = ("mssql+pyodbc://" + SQL_USER_NAME + "@"
+    #     + SQL_SERVER + ":"+ SQL_PASSWORD
+    #     + "@" + SQL_SERVER + ":1433/"
+    #     + SQL_DATABASE+ "?trusted_connection=yes&driver=ODBC+Driver+18+for+SQL+Server"
+    # )
+    SQLALCHEMY_DATABASE_URI = (
+    "mssql+pyodbc://" +
+    SQL_USER_NAME + ":" + SQL_PASSWORD + "@" +
+    SQL_SERVER + ":1433/" +
+    SQL_DATABASE +
+    "?driver=ODBC+Driver+17+for+SQL+Server"
+)
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     ### Info for MS Authentication ###
@@ -30,7 +41,7 @@ class Config(object):
     # if not CLIENT_SECRET:
     #     raise ValueError("Need to define CLIENT_SECRET environment variable")
 
-    AUTHORITY = "https://login.microsoftonline.com/common"  # For multi-tenant app, else put tenant name
+    AUTHORITY = "https://login.microsoftonline.com/250d4fd5-49c3-4b2b-b385-5176549b31c4"  # For multi-tenant app, else put tenant name
     # AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 
     CLIENT_ID = "cf6df2fa-71a3-418a-a306-d38f8cb0a6ce"
@@ -42,3 +53,4 @@ class Config(object):
     SCOPE = ["User.Read"] # Only need to read user profile for this app
 
     SESSION_TYPE = "filesystem"  # Token cache will be stored in server-side session
+
